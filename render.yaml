@@ -28,7 +28,6 @@ services:
     env: docker
     region: oregon
     plan: free
-    ipAllowList: []
 
 databases:
   - name: gamescout-db
