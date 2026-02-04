@@ -186,39 +186,55 @@ def get_recommendations():
     genre_based = []
     if wishlist_and_played:
         # Collect all genres from user's wishlist and played games
-        user_genres = set()
+        user_genre_names = set()
         for game in wishlist_and_played:
             if game.genres:
-                user_genres.update(g.lower() for g in game.genres)
+                user_genre_names.update(g.lower() for g in game.genres)
         
-        if user_genres:
-            # Convert genre names to slugs
+        if user_genre_names:
+            # Convert genre names to slugs for RAWG API
             genres_response = RAWGService.get_genres()
             all_genres = genres_response.get('results', [])
             genre_name_to_slug = {g['name'].lower(): g['slug'] for g in all_genres}
             
-            genre_slugs = [genre_name_to_slug.get(g) for g in user_genres if genre_name_to_slug.get(g)]
+            print(f"User's collection genre names: {user_genre_names}")
+            
+            # Only use genres that match the user's collection
+            genre_slugs = [genre_name_to_slug.get(g) for g in user_genre_names if genre_name_to_slug.get(g)]
+            
+            print(f"Matched genre slugs for recommendations: {genre_slugs}")
             
             if genre_slugs:
-                # Fetch games matching these genres
+                # Fetch games matching ONLY these genres (not mixed)
                 genre_result = RAWGService.search_games(
                     page=1,
-                    page_size=30,
-                    genres=','.join(genre_slugs[:3]),  # Limit to top 3 genres
+                    page_size=40,
+                    genres=','.join(genre_slugs),  # Use all matched genres
                     platforms=platforms_param,
                     release_filter='both'
                 )
                 
                 if 'results' in genre_result:
-                    # Filter and get one game per genre from wishlist/played games
-                    genre_based = [
-                        game for game in genre_result['results']
-                        if game.get('id') not in played_rawg_ids
-                        and not is_adult_content(game)
-                        and game.get('rating', 0) >= 3.0
-                    ][:10]  # Limit to 10 games
+                    # Filter to only include games where AT LEAST ONE genre matches user's collection
+                    # and ensure high quality recommendations
+                    filtered_games = []
+                    for game in genre_result['results']:
+                        if game.get('id') in played_rawg_ids or is_adult_content(game):
+                            continue
+                        if game.get('rating', 0) < 3.5:  # Higher threshold for collection-based
+                            continue
+                        
+                        # Check if game has at least one genre from user's collection
+                        game_genres = [g['name'].lower() for g in game.get('genres', [])]
+                        has_matching_genre = any(ug in game_genres for ug in user_genre_names)
+                        
+                        if has_matching_genre:
+                            filtered_games.append(game)
                     
-                    genre_based.sort(key=lambda x: x.get('rating', 0), reverse=True)
+                    # Sort by rating and limit
+                    genre_based = sorted(filtered_games, key=lambda x: x.get('rating', 0), reverse=True)[:10]
+                    
+                    print(f"Found {len(genre_based)} genre-based recommendations")
     
     return jsonify({
         'preference_based': preference_based,
