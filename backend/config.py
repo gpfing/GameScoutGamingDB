@@ -6,7 +6,11 @@ load_dotenv()
 class Config:
     SECRET_KEY = os.getenv('SECRET_KEY', 'dev-secret-key')
     # Use SQLite for easy local testing, PostgreSQL for production
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite:///gamescout.db')
+    # Render uses DATABASE_URL, fix for SQLAlchemy 1.4+ (postgres:// -> postgresql://)
+    database_url = os.getenv('DATABASE_URL', 'sqlite:///gamescout.db')
+    if database_url.startswith('postgres://'):
+        database_url = database_url.replace('postgres://', 'postgresql://', 1)
+    SQLALCHEMY_DATABASE_URI = database_url
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
     # JWT Configuration

@@ -1,0 +1,36 @@
+services:
+  # Flask Backend API
+  - type: web
+    name: gamescout-api
+    env: python
+    region: oregon
+    buildCommand: cd backend && ./build.sh
+    startCommand: cd backend && gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: SECRET_KEY
+        generateValue: true
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: RAWG_API_KEY
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: gamescout-db
+          property: connectionString
+
+  # PostgreSQL Database
+  - type: pserv
+    name: gamescout-db
+    env: docker
+    region: oregon
+    plan: free
+    ipAllowList: []
+
+databases:
+  - name: gamescout-db
+    databaseName: gamescout
+    user: gamescout

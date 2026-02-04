@@ -17,9 +17,19 @@ def create_app():
     # Initialize extensions
     db.init_app(app)
     cache.init_app(app)
+    
+    # CORS configuration - allow frontend origins
+    allowed_origins = [
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        os.getenv('FRONTEND_URL', '')  # Production frontend URL from env
+    ]
+    # Remove empty strings
+    allowed_origins = [origin for origin in allowed_origins if origin]
+    
     CORS(app, resources={
         r"/api/*": {
-            "origins": ["http://localhost:5173", "http://127.0.0.1:5173"],
+            "origins": allowed_origins,
             "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
             "allow_headers": ["Content-Type", "Authorization"],
             "expose_headers": ["Content-Type", "Authorization"],
