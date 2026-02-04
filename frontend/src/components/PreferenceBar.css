@@ -1,0 +1,154 @@
+.preference-bar {
+  background: linear-gradient(135deg, #f0f0ff 0%, #fff0f8 100%);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  border: 2px solid #e0e0ff;
+}
+
+.preference-bar.editing {
+  background: white;
+  border: 2px solid #667eea;
+}
+
+.preference-display {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.preference-display div {
+  flex: 1;
+  min-width: 200px;
+}
+
+.preference-bar:not(.editing) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-edit {
+  padding: 0.75rem 1.5rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.btn-edit:hover {
+  background: #5568d3;
+}
+
+.preference-section {
+  margin-bottom: 1.5rem;
+}
+
+.preference-section label {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.75rem;
+}
+
+.chips-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  padding: 0.5rem 1rem;
+  border: 2px solid #ddd;
+  background: white;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.chip:hover {
+  border-color: #667eea;
+}
+
+.chip.selected {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: transparent;
+}
+
+.chip:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #eee;
+}
+
+.chip:disabled:hover {
+  border-color: #eee;
+}
+
+.preference-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn-save,
+.btn-cancel {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-save {
+  background: #4caf50;
+  color: white;
+}
+
+.btn-save:hover:not(:disabled) {
+  background: #45a049;
+}
+
+.btn-save:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-cancel {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.btn-cancel:hover:not(:disabled) {
+  background: #e5e5e5;
+}
+
+@media (max-width: 768px) {
+  .preference-bar:not(.editing) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-edit {
+    width: 100%;
+  }
+
+  .preference-actions {
+    flex-direction: column;
+  }
+
+  .btn-save,
+  .btn-cancel {
+    width: 100%;
+  }
+}
