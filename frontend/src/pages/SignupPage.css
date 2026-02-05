@@ -3,31 +3,32 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%);
   padding: 2rem 1rem;
 }
 
 .signup-container {
-  background: white;
+  background: #2a2a2a;
   padding: 2.5rem;
   border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
   width: 100%;
   max-width: 500px;
   max-height: 90vh;
   overflow-y: auto;
+  border: 1px solid #3a3a3a;
 }
 
 .signup-container h1 {
   margin: 0 0 0.5rem;
   font-size: 2rem;
-  color: #333;
+  color: #e0e0e0;
   text-align: center;
 }
 
 .subtitle {
   text-align: center;
-  color: #666;
+  color: #b0b0b0;
   margin-bottom: 2rem;
   font-size: 0.95rem;
 }
@@ -46,26 +47,29 @@
 
 .form-group label {
   font-weight: 500;
-  color: #333;
+  color: #e0e0e0;
   font-size: 0.9rem;
 }
 
 .form-group input {
   padding: 0.75rem;
-  border: 1px solid #ddd;
+  border: 1px solid #4a4a4a;
   border-radius: 6px;
   font-size: 1rem;
   transition: border-color 0.2s;
+  background: #1a1a1a;
+  color: #e0e0e0;
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #DC143C;
 }
 
 .form-group input:disabled {
-  background-color: #f5f5f5;
+  background-color: #2a2a2a;
   cursor: not-allowed;
+  color: #808080;
 }
 
 .preferences-section {
@@ -76,7 +80,7 @@
 
 .preferences-section label {
   font-weight: 500;
-  color: #333;
+  color: #e0e0e0;
   font-size: 0.9rem;
 }
 
@@ -88,20 +92,38 @@
 
 .chip {
   padding: 0.5rem 1rem;
-  border: 2px solid #ddd;
-  background: white;
+  border: 2px solid #4a4a4a;
+  background: #1a1a1a;
   border-radius: 20px;
   font-size: 0.85rem;
   cursor: pointer;
   transition: all 0.2s;
+  color: #b0b0b0;
 }
 
 .chip:hover:not(:disabled) {
-  border-color: #667eea;
+  border-color: #DC143C;
+  color: #e0e0e0;
+}
+
+.chip {
+  padding: 0.5rem 1rem;
+  border: 2px solid #4a4a4a;
+  background: #1a1a1a;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #b0b0b0;
+}
+
+.chip:hover:not(:disabled) {
+  border-color: #DC143C;
+  color: #e0e0e0;
 }
 
 .chip.selected {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #DC143C 0%, #8B0000 100%);
   color: white;
   border-color: transparent;
 }
@@ -112,16 +134,17 @@
 }
 
 .error-message {
-  background-color: #fee;
-  color: #c33;
+  background-color: #3a1a1a;
+  color: #ff6b6b;
   padding: 0.75rem;
   border-radius: 6px;
   font-size: 0.9rem;
+  border: 1px solid #8B0000;
 }
 
 .btn-primary {
   padding: 0.875rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #DC143C 0%, #8B0000 100%);
   color: white;
   border: none;
   border-radius: 6px;
@@ -133,7 +156,7 @@
 
 .btn-primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 6px 20px rgba(220, 20, 60, 0.5);
 }
 
 .btn-primary:disabled {
@@ -144,16 +167,17 @@
 .login-link {
   text-align: center;
   margin-top: 1.5rem;
-  color: #666;
+  color: #b0b0b0;
   font-size: 0.9rem;
 }
 
 .login-link a {
-  color: #667eea;
+  color: #DC143C;
   text-decoration: none;
   font-weight: 600;
 }
 
 .login-link a:hover {
   text-decoration: underline;
+  color: #ff4d4d;
 }

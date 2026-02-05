@@ -8,29 +8,14 @@ function SignupPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [selectedGenres, setSelectedGenres] = useState([]);
-  const [selectedPlatforms, setSelectedPlatforms] = useState([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   
   const { signup } = useAuth();
   const navigate = useNavigate();
 
-  // Common genres and platforms
-  const genres = ['action', 'adventure', 'rpg', 'shooter', 'strategy', 'indie', 'simulation', 'sports', 'racing', 'platformer'];
-  const platforms = ['PC', 'PlayStation 5', 'PlayStation 4', 'Xbox Series X/S', 'Xbox One', 'Nintendo Switch'];
-
-  const toggleGenre = (genre) => {
-    setSelectedGenres(prev =>
-      prev.includes(genre) ? prev.filter(g => g !== genre) : [...prev, genre]
-    );
-  };
-
-  const togglePlatform = (platform) => {
-    setSelectedPlatforms(prev =>
-      prev.includes(platform) ? prev.filter(p => p !== platform) : [...prev, platform]
-    );
-  };
+  const defaultGenres = ['action'];
+  const defaultPlatforms = ['PC'];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,7 +33,7 @@ function SignupPage() {
 
     setLoading(true);
 
-    const result = await signup(username, email, password, selectedGenres, selectedPlatforms);
+    const result = await signup(username, email, password, defaultGenres, defaultPlatforms);
     
     if (result.success) {
       navigate('/dashboard');
@@ -112,40 +97,6 @@ function SignupPage() {
               required
               disabled={loading}
             />
-          </div>
-
-          <div className="preferences-section">
-            <label>Favorite Genres (optional)</label>
-            <div className="chips-container">
-              {genres.map(genre => (
-                <button
-                  key={genre}
-                  type="button"
-                  className={`chip ${selectedGenres.includes(genre) ? 'selected' : ''}`}
-                  onClick={() => toggleGenre(genre)}
-                  disabled={loading}
-                >
-                  {genre}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="preferences-section">
-            <label>Favorite Platforms (optional)</label>
-            <div className="chips-container">
-              {platforms.map(platform => (
-                <button
-                  key={platform}
-                  type="button"
-                  className={`chip ${selectedPlatforms.includes(platform) ? 'selected' : ''}`}
-                  onClick={() => togglePlatform(platform)}
-                  disabled={loading}
-                >
-                  {platform}
-                </button>
-              ))}
-            </div>
           </div>
 
           {error && <div className="error-message">{error}</div>}

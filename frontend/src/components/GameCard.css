@@ -1,15 +1,17 @@
 .game-card {
-  background: white;
+  background: #2a2a2a;
   border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  border: 1px solid #3a3a3a;
 }
 
 .game-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 20px rgba(220, 20, 60, 0.4);
+  border-color: #DC143C;
 }
 
 .game-card-image {
@@ -17,7 +19,7 @@
   width: 100%;
   height: 180px;
   overflow: hidden;
-  background: #f5f5f5;
+  background: #1a1a1a;
 }
 
 .game-card-image img {
@@ -32,7 +34,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #DC143C 0%, #8B0000 100%);
 }
 
 .game-card-placeholder span {
@@ -59,7 +61,7 @@
 .game-title {
   margin: 0 0 0.5rem;
   font-size: 1rem;
-  color: #333;
+  color: #e0e0e0;
   line-height: 1.3;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -70,7 +72,7 @@
 .game-release-date {
   margin: 0.5rem 0;
   font-size: 0.85rem;
-  color: #666;
+  color: #b0b0b0;
 }
 
 .game-genres {
@@ -82,9 +84,10 @@
 
 .genre-tag {
   padding: 0.25rem 0.5rem;
-  background: #f0f0ff;
-  color: #667eea;
+  background: #3a3a3a;
+  color: #DC143C;
   border-radius: 4px;
   font-size: 0.75rem;
   font-weight: 500;
+  border: 1px solid #4a4a4a;
 }

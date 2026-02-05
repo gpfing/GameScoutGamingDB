@@ -1,21 +1,21 @@
 .preference-bar {
-  background: linear-gradient(135deg, #f0f0ff 0%, #fff0f8 100%);
+  background: #2a2a2a;
   padding: 1.5rem;
   border-radius: 12px;
   margin-bottom: 2rem;
-  border: 2px solid #e0e0ff;
+  border: 2px solid #3a3a3a;
 }
 
 .preference-bar.editing {
-  background: white;
-  border: 2px solid #667eea;
+  background: #2a2a2a;
+  border: 2px solid #DC143C;
 }
 
 .preference-display {
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
-  color: #333;
+  color: #e0e0e0;
   font-size: 0.95rem;
 }
 
@@ -33,7 +33,7 @@
 
 .btn-edit {
   padding: 0.75rem 1.5rem;
-  background: #667eea;
+  background: linear-gradient(135deg, #DC143C 0%, #8B0000 100%);
   color: white;
   border: none;
   border-radius: 8px;
@@ -44,7 +44,7 @@
 }
 
 .btn-edit:hover {
-  background: #5568d3;
+  box-shadow: 0 4px 12px rgba(220, 20, 60, 0.5);
 }
 
 .preference-section {
@@ -54,7 +54,7 @@
 .preference-section label {
   display: block;
   font-weight: 600;
-  color: #333;
+  color: #e0e0e0;
   margin-bottom: 0.75rem;
 }
 
@@ -75,11 +75,11 @@
 }
 
 .chip:hover {
-  border-color: #667eea;
+  border-color: #DC143C;
 }
 
 .chip.selected {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #DC143C 0%, #8B0000 100%);
   color: white;
   border-color: transparent;
 }
@@ -87,11 +87,11 @@
 .chip:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  border-color: #eee;
+  border-color: #3a3a3a;
 }
 
 .chip:disabled:hover {
-  border-color: #eee;
+  border-color: #3a3a3a;
 }
 
 .preference-actions {
@@ -111,12 +111,12 @@
 }
 
 .btn-save {
-  background: #4caf50;
+  background: #2e7d32;
   color: white;
 }
 
 .btn-save:hover:not(:disabled) {
-  background: #45a049;
+  background: #1b5e20;
 }
 
 .btn-save:disabled {
@@ -125,12 +125,14 @@
 }
 
 .btn-cancel {
-  background: #f5f5f5;
-  color: #666;
+  background: #3a3a3a;
+  color: #b0b0b0;
+  border: 1px solid #4a4a4a;
 }
 
 .btn-cancel:hover:not(:disabled) {
-  background: #e5e5e5;
+  background: #4a4a4a;
+  color: #e0e0e0;
 }
 
 @media (max-width: 768px) {

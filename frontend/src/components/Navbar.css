@@ -1,9 +1,10 @@
 .navbar {
-  background: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: #2a2a2a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   position: sticky;
   top: 0;
   z-index: 100;
+  border-bottom: 2px solid #3a3a3a;
 }
 
 .navbar-container {
@@ -18,13 +19,13 @@
 
 .navbar-brand {
   text-decoration: none;
-  color: #333;
+  color: #e0e0e0;
 }
 
 .navbar-brand h2 {
   margin: 0;
   font-size: 1.5rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #DC143C 0%, #8B0000 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -38,7 +39,7 @@
 
 .nav-link {
   text-decoration: none;
-  color: #666;
+  color: #b0b0b0;
   font-weight: 500;
   padding: 0.5rem 1rem;
   border-radius: 6px;
@@ -46,13 +47,13 @@
 }
 
 .nav-link:hover {
-  color: #667eea;
-  background: #f5f5f5;
+  color: #DC143C;
+  background: #3a3a3a;
 }
 
 .nav-link.active {
-  color: #667eea;
-  background: #f0f0ff;
+  color: #DC143C;
+  background: #3a3a3a;
 }
 
 .navbar-user {
@@ -62,25 +63,25 @@
 }
 
 .username {
-  color: #333;
+  color: #e0e0e0;
   font-weight: 500;
 }
 
 .btn-logout {
   padding: 0.5rem 1rem;
-  background: #f5f5f5;
-  border: 1px solid #ddd;
+  background: #3a3a3a;
+  border: 1px solid #4a4a4a;
   border-radius: 6px;
-  color: #666;
+  color: #b0b0b0;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .btn-logout:hover {
-  background: #fee;
-  border-color: #fcc;
-  color: #c33;
+  background: #8B0000;
+  border-color: #A52A2A;
+  color: #fff;
 }
 
 @media (max-width: 768px) {
